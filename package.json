@@ -1,0 +1,27 @@
+{
+  "name": "spin",
+  "version": "1.0.0",
+  "description": "Solar Panel Inverter Notifications",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aajshaw/spin.git"
+  },
+  "keywords": [
+    "solar",
+    "panel",
+    "inverter"
+  ],
+  "author": "Anthony Shaw",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aajshaw/spin/issues"
+  },
+  "homepage": "https://github.com/aajshaw/spin#readme",
+  "dependencies": {
+    "electron": "^1.8.2"
+  }
+}
