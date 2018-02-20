@@ -8,13 +8,14 @@ const url = require('url');
 let window; // Keep reference so window does not close
 
 function createWindow() {
-  var window = new browserWindow({width: 800, height: 800});
+  var window = new browserWindow({width: 400, height: 200});
   window.loadURL(url.format({
     pathname: path.join(__dirname, 'app.html'),
     protocol: 'file:',
     slashes: true
   }));
-  window.webContents.openDevTools();
+  window.setMenu(null);
+//  window.webContents.openDevTools();
   window.on('closed', () => {
     window = null;
   });

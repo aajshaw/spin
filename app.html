@@ -3,11 +3,43 @@
   <head>
     <meta charset="UTF-8">
     <title>Solar Panel Inverter Notifications</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   </head>
   <body>
     <div id="app">
-      <p>{{ location }}</p>
-      Some stuff in here
+      <table>
+        <tr>
+          <td>Generating</td>
+          <td class="text-right">{{ outputPower }}kW</td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+          <td />
+          <td class="text-right">Today</td>
+          <td class="text-right">{{ energyToday }}kWh</td>
+          <td class="text-right">{{ hoursToday }}h</td>
+          <td class="text-right">{{ minutesToday }}m</td>
+        </tr>
+        <tr>
+          <td />
+          <td class="text-right">Yesterday</td>
+          <td class="text-right">{{ energyYesterday }}kWh</td>
+          <td class="text-right">{{ hoursYesterday }}h</td>
+          <td class="text-right">{{ minutesYesterday }}m</td>
+        </tr>
+        <tr>
+          <td />
+          <td class="text-right">Lifetime</td>
+          <td class="text-right">{{ energyLifetime }}kWh</td>
+          <td class="text-right">{{ hoursLifetime }}h</td>
+          <td class="text-right">{{ minutesLifetime }}m</td>
+        </tr>
+        <tr>
+          <td colspan="2">Average daily production</td>
+          <td class="text-right">{{ averageDailyProduction }}kWh</td>
+          <td colspan="2" class="text-right">{{ daysProducing }} days</td>
+        </tr>
+      </table>
     </div>
     <script src="https://unpkg.com/vue"></script>
     <script>
