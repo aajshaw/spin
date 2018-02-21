@@ -2,10 +2,10 @@
 
 const http = require('http');
 const parseString = require('xml2js-parser').parseString;
-const nconf = require('nconf');
 
-nconf.file('./config.json');
-let updatePeriod = nconf.get('updatePeriod');
+const config = require('./config');
+
+let updatePeriod = config.get('updatePeriod');
 
 var app = new Vue({
   el: '#app',

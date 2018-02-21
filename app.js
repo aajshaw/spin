@@ -9,17 +9,6 @@ const url = require('url');
 
 const config = require('./config')
 
-//const nconf = require('nconf');
-
-//nconf.file('./config.json');
-//nconf.defaults({
-//  'windowOpenDevTools': false,
-//  'windowShowMenu': false
-//});
-// let windowWidth = nconf.get('windowWidth');
-// let windowHeight = nconf.get('windowHeight');
-// let windowOpenDevTools = nconf.get('windowOpenDevTools');
-// let windowShowMenu = nconf.get('windowShowMenu');
 let windowWidth = config.get('windowWidth');
 let windowHeight = config.get('windowHeight');
 let windowOpenDevTools = config.get('windowOpenDevTools');
