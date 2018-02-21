@@ -1,3 +1,5 @@
+"use strict"
+
 const electron = require('electron');
 const app = electron.app;
 const browserWindow = electron.BrowserWindow;
@@ -5,17 +7,39 @@ const browserWindow = electron.BrowserWindow;
 const path = require('path');
 const url = require('url');
 
+const config = require('./config')
+
+//const nconf = require('nconf');
+
+//nconf.file('./config.json');
+//nconf.defaults({
+//  'windowOpenDevTools': false,
+//  'windowShowMenu': false
+//});
+// let windowWidth = nconf.get('windowWidth');
+// let windowHeight = nconf.get('windowHeight');
+// let windowOpenDevTools = nconf.get('windowOpenDevTools');
+// let windowShowMenu = nconf.get('windowShowMenu');
+let windowWidth = config.get('windowWidth');
+let windowHeight = config.get('windowHeight');
+let windowOpenDevTools = config.get('windowOpenDevTools');
+let windowShowMenu = config.get('windowShowMenu');
+
 let window; // Keep reference so window does not close
 
 function createWindow() {
-  var window = new browserWindow({width: 400, height: 200});
+  var window = new browserWindow({width: windowWidth, height: windowHeight});
   window.loadURL(url.format({
     pathname: path.join(__dirname, 'app.html'),
     protocol: 'file:',
     slashes: true
   }));
-  window.setMenu(null);
-//  window.webContents.openDevTools();
+  if (!windowShowMenu) {
+    window.setMenu(null);
+  }
+  if (windowOpenDevTools) {
+    window.webContents.openDevTools();
+  }
   window.on('closed', () => {
     window = null;
   });

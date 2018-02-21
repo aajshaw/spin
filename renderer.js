@@ -1,5 +1,11 @@
+"use strict"
+
 const http = require('http');
 const parseString = require('xml2js-parser').parseString;
+const nconf = require('nconf');
+
+nconf.file('./config.json');
+let updatePeriod = nconf.get('updatePeriod');
 
 var app = new Vue({
   el: '#app',
@@ -67,7 +73,7 @@ function update() {
     });
   }).end();
 
-  setTimeout(update, 10000);
+  setTimeout(update, updatePeriod * 1000);
 }
 
 update();

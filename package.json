@@ -23,6 +23,7 @@
   "homepage": "https://github.com/aajshaw/spin#readme",
   "dependencies": {
     "electron": "^1.8.2",
+    "nconf": "^0.10.0",
     "xml2js-parser": "^1.1.1"
   }
 }
