@@ -9,7 +9,8 @@ nconf.defaults({
   "windowWidth": 400,
   "windowHeight": 200,
   "windowOpenDevTools": false,
-  "windowShowMenu": false
+  "windowShowMenu": false,
+  "windowIcon": __dirname + "./assets/spin.ico"
 });
 
 module.exports = {
