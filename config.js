@@ -10,7 +10,11 @@ nconf.defaults({
   "windowHeight": 200,
   "windowOpenDevTools": false,
   "windowShowMenu": false,
-  "windowIcon": __dirname + "./assets/spin.ico"
+  "windowIcon": __dirname + "/assets/spin.ico",
+  "soundDailyKw" : __dirname + "/assets/Blastwave_FX_CashRegister_S08IN_92.wav",
+  "soundLifetime10Kw" : __dirname + "",
+  "soundLifetime100Kw": __dirname + "",
+  "soundLifetime1Mw": __dirname + ""
 });
 
 module.exports = {

@@ -3,6 +3,18 @@
 const http = require('http');
 const parseString = require('xml2js-parser').parseString;
 
+// Use edge-js rather than edge because it tracks node version much better
+// Use electron version of edge-js
+const edge = require('electron-edge-js');
+// Call out to .net to play a sound effect
+let play = edge.func(function() {/*
+  async (input) => {
+    var player = new System.Media.SoundPlayer((string)input);
+    player.PlaySync();
+    return null;
+  }
+*/})
+
 const config = require('./config');
 
 let updatePeriod = config.get('updatePeriod');
@@ -25,6 +37,8 @@ var app = new Vue({
   },
   methods: {updatex() { this.header = 'that was easy'; }}
 });
+
+let status = { initialised: false};
 
 function update() {
   http.request({
@@ -67,6 +81,28 @@ function update() {
             app.minutesLifetime = parseInt(result.response.HoursExportedLifetime, 16) % 60;
             app.daysProducing = parseInt(result.response.DaysProducing, 16);
             app.averageDailyProduction = (app.energyLifetime / app.daysProducing).toFixed(2);
+
+            if (status.initialised) {
+              if (Math.floor(app.energyToday) > Math.floor(status.energyToday)) {
+                play(config.get('soundDailyKw'));
+              }
+              let energy = Math.floor(app.energyLifetime);
+              if (energy % 10 == 0 && energy > Math.floor(status.energyLifetime)) {
+                if (energy % 1000 == 0) {
+                  play(config.get('soundLifetime1Mw'));
+                } else if (energy % 100 == 0) {
+                  play(config.get('soundLifetime100Kw'));
+                } else if (energy % 10 == 0) {
+                  play(config.get('soundLifetime10Kw'));
+                }
+              }
+              status.energyToday = app.energyToday;
+              status.energyLifetime = app.energyLifetime;
+            } else {
+              status.energyToday = app.energyToday;
+              status.energyLifetime = app.energyLifetime;
+              status.initialised = true;
+            }
           }
         });
       }
