@@ -22,6 +22,7 @@ let updatePeriod = config.get('updatePeriod');
 var app = new Vue({
   el: '#app',
   data: {
+    generatingColor: 'red',
     outputPower: 0.000,
     energyToday: 0.00,
     hoursToday: 0,
@@ -34,8 +35,7 @@ var app = new Vue({
     minutesLifetime: 0,
     averageDailyProduction: 0.00,
     daysProducing: 0
-  },
-  methods: {updatex() { this.header = 'that was easy'; }}
+  }
 });
 
 let status = { initialised: false};
@@ -54,6 +54,7 @@ function update() {
           if (!err) {
             app.outputPower = (result.response.OutputPower * 1.0).toFixed(3);
           }
+          app.generatingColor = (app.outputPower == 0) ? 'text-danger' : 'text-success';
         });
       }
     });
