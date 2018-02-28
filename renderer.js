@@ -23,6 +23,8 @@ var app = new Vue({
   el: '#app',
   data: {
     generatingColor: 'red',
+    inputVoltage: 0.0,
+    outputVoltage: 0.0,
     outputPower: 0.000,
     energyToday: 0.00,
     hoursToday: 0,
@@ -53,6 +55,8 @@ function update() {
         parseString(xml, (err, result) => {
           if (!err) {
             app.outputPower = (result.response.OutputPower * 1.0).toFixed(3);
+            app.inputVoltage = ((result.response.InputVoltage * 1.0) + (result.response.InputVoltage2 * 1.0)).toFixed(1);
+            app.outputVoltage = (result.response.OutputVoltage * 1.0).toFixed(1);
           }
           app.generatingColor = (app.outputPower == 0) ? 'text-danger' : 'text-success';
         });
