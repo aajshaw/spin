@@ -15,8 +15,6 @@ let windowOpenDevTools = config.get('windowOpenDevTools');
 let windowShowMenu = config.get('windowShowMenu');
 let windowIcon = config.get('windowIcon');
 
-let window; // Keep reference so window does not close
-
 function createWindow() {
   var windowOptions = {
     width: windowWidth,
@@ -25,7 +23,6 @@ function createWindow() {
   if (windowIcon) {
     windowOptions.icon = windowIcon;
   }
-//  let window = new browserWindow({width: windowWidth, height: windowHeight, icon: __dirname + './assets/spin.ico'});
   let window = new browserWindow(windowOptions);
   window.loadURL(url.format({
     pathname: path.join(__dirname, 'app.html'),
