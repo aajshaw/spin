@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/aajshaw/spin#readme",
   "dependencies": {
-    "electron": "^1.8.6",
+    "electron": "^1.8.8",
     "electron-edge-js": "^8.3.2",
     "hoek": "^5.0.3",
     "nconf": "^0.10.0",
